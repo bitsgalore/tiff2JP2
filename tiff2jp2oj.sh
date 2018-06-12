@@ -109,6 +109,20 @@ while IFS= read -d $'\0' -r file ; do
             -M 32
             -C "$cCommentAccess""
 
+    cmdlineAccess="opj_compress -i "$file"
+            -o "$outAccess"
+            -I
+            -n 6
+            -p RPCL
+            -t 1024,1024
+            -b 64,64
+            -c [256,256],[256,256],[128,128],[128,128],[128,128],[128,128]
+            -r 2560,1280,640,320,160,80,40,20
+            -SOP
+            -EPH
+            -M 32
+            -C "$cCommentAccess""
+
     # Convert to JP2 (lossless master, lossy access copy)   
     #$cmdlineMaster >>$stdoutOPJ 2>>$stderrOPJ
     $cmdlineAccess >>$stdoutOPJ 2>>$stderrOPJ
